@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/gameBeginFragment">
+
+    <fragment
+        android:id="@+id/gameBeginFragment"
+        android:name="com.codelabs.gameservices.huawei.ui.main.gamebegin.GameBeginFragment"
+        android:label="game_begin_fragment"
+        tools:layout="@layout/fragment_game_begin" >
+        <action
+            android:id="@+id/start_game_navigation"
+            app:destination="@id/quizFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/quizFragment"
+        android:name="com.codelabs.gameservices.huawei.ui.main.quiz.QuizFragment"
+        android:label="quiz_fragment"
+        tools:layout="@layout/quiz_fragment" >
+        <action
+            android:id="@+id/end_game_navigation"
+            app:destination="@id/gameBeginFragment" />
+    </fragment>
+</navigation>

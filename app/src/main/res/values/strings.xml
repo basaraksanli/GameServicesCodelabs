@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">GameServiceAchievements</string>
+    <string name="start_quiz">Start Quiz</string>
+    <string name="play_button">Play Button</string>
+    <string name="last_score">Last Score:</string>
+    <string name="_0">0</string>
+    <string name="abuttontext">A)</string>
+    <string name="bbuttontext">B)</string>
+    <string name="cbuttonText">C)</string>
+    <string name="dbuttontext">D)</string>
+    <string name="questiontext">Q:</string>
+    <string name="scoretext">Score:</string>
+    <string name="zeroScore">0</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="achievements">Achievements</string>
+    <string name="you_have_logged_in_as">You have logged in as:</string>
+</resources>
