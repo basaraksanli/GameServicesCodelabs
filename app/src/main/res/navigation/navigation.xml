@@ -13,6 +13,9 @@
         <action
             android:id="@+id/start_game_navigation"
             app:destination="@id/quizFragment" />
+        <action
+            android:id="@+id/showAchievementListNav"
+            app:destination="@id/achievementsFragment" />
     </fragment>
     <fragment
         android:id="@+id/quizFragment"
@@ -21,6 +24,15 @@
         tools:layout="@layout/quiz_fragment" >
         <action
             android:id="@+id/end_game_navigation"
+            app:destination="@id/gameBeginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/achievementsFragment"
+        android:name="com.codelabs.gameservices.huawei.ui.main.achievements.AchievementsFragment"
+        android:label="achievements_fragment"
+        tools:layout="@layout/achievements_fragment" >
+        <action
+            android:id="@+id/goBackToMainMenuNav"
             app:destination="@id/gameBeginFragment" />
     </fragment>
 </navigation>

@@ -6,14 +6,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.codelabs.gameservices.huawei.GameServiceUtils
-import com.huawei.hmf.tasks.Task
-import com.huawei.hms.common.ApiException
 import com.huawei.hms.jos.JosApps
 
 
 class GameBeginViewModel(activity: Activity) : ViewModel() {
 
     private val _navigateToQuizFragment = MutableLiveData<Boolean>()
+    private val _navigateToAchievements = MutableLiveData<Boolean>()
     var accountName: MutableLiveData<String> = MutableLiveData()
     var activity: Activity? = null
     var gameServiceUtils: GameServiceUtils? = null
@@ -41,15 +40,20 @@ class GameBeginViewModel(activity: Activity) : ViewModel() {
         _navigateToQuizFragment.value = true
     }
 
-    fun doneNavigating() {
+    fun doneNavigatingQuiz() {
         _navigateToQuizFragment.value = false
     }
 
+    val navigateToAchievements: LiveData<Boolean>
+        get() = _navigateToAchievements
+
     fun showAchievements(view: View) {
-        gameServiceUtils!!.showAchivementList()
+        _navigateToAchievements.value = true
     }
 
-
+    fun doneNavigationAchievements() {
+        _navigateToAchievements.value = false
+    }
 
 
 }

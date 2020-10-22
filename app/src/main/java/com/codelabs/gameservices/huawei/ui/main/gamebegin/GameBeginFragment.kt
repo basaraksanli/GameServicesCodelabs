@@ -41,7 +41,16 @@ class GameBeginFragment : Fragment() {
             Observer {
                 if (it == true) {
                     this.findNavController().navigate(R.id.start_game_navigation)
-                    gameBeginViewModel.doneNavigating()
+                    gameBeginViewModel.doneNavigatingQuiz()
+                }
+            })
+
+        gameBeginViewModel.navigateToAchievements.observe(
+            viewLifecycleOwner,
+            Observer {
+                if (it == true) {
+                    this.findNavController().navigate(R.id.showAchievementListNav)
+                    gameBeginViewModel.doneNavigationAchievements()
                 }
             })
 

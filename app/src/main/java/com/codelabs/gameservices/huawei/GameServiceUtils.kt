@@ -16,7 +16,7 @@ import com.huawei.hms.support.hwid.request.HuaweiIdAuthParams
 import com.huawei.hms.support.hwid.request.HuaweiIdAuthParamsHelper
 
 
-class GameServiceUtils(activity: Activity, viewModel: GameBeginViewModel?) {
+class GameServiceUtils(activity: Activity?, viewModel: GameBeginViewModel?) {
 
 
     var activity: Activity? = null
@@ -24,7 +24,10 @@ class GameServiceUtils(activity: Activity, viewModel: GameBeginViewModel?) {
     var achievementClient: AchievementsClient? = null
     var buoyClient: BuoyClient? = null
     private var playersClient: PlayersClient? = null
-    private var playerID: String? = null
+
+    companion object{
+        private var playerID: String? = null
+    }
 
 
 
@@ -44,20 +47,22 @@ class GameServiceUtils(activity: Activity, viewModel: GameBeginViewModel?) {
     }
 
     fun signIn() {
-        val authHuaweiIdTask =
-            HuaweiIdAuthManager.getService(activity, getHuaweiIdParams()).silentSignIn()
-        authHuaweiIdTask.addOnSuccessListener {
-            viewModel!!.accountName.value = it.displayName
-            login()
-        }.addOnFailureListener { e: Exception? ->
-            if (e is ApiException) {
-                val service = HuaweiIdAuthManager.getService(activity, getHuaweiIdParams())
-                activity!!.startActivityForResult(service.signInIntent, 6013)
+        if(playerID==null) {
+            val authHuaweiIdTask =
+                HuaweiIdAuthManager.getService(activity, getHuaweiIdParams()).silentSignIn()
+            authHuaweiIdTask.addOnSuccessListener {
+                viewModel!!.accountName.value = it.displayName
+                getPlayerID()
+            }.addOnFailureListener { e: Exception? ->
+                if (e is ApiException) {
+                    val service = HuaweiIdAuthManager.getService(activity, getHuaweiIdParams())
+                    activity!!.startActivityForResult(service.signInIntent, 6013)
+                }
             }
         }
     }
 
-    private fun login() {
+    private fun getPlayerID() {
         playersClient = Games.getPlayersClient(activity)
         val playerTask: Task<Player> = playersClient!!.currentPlayer
         playerTask.addOnSuccessListener { player: Player ->

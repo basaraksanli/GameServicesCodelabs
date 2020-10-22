@@ -98,6 +98,9 @@ class QuizViewModel(activity: Activity) : ViewModel() {
         if(correctAnswerCount==10)
             gameServicesUtils.revealAchievement(SOPHISTICATEDACHIEVEMENTID)
 
+        if(questionObject!!.value!!.questionID== 9)
+            gameServicesUtils.unlockAchievement(SCIENTISTACHIEVEMENTID)
+
         gameServicesUtils.unlockAchievement(NEWBIEACHIEVEMENTID)
         gameServicesUtils.increment(LEARNINGACHIEVEMENTID,true)
         gameServicesUtils.increment(SOPHISTICATEDACHIEVEMENTID, true)
