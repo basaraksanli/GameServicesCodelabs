@@ -24,10 +24,10 @@ android {
     }
     signingConfigs {
         config {
-            storeFile file('E:\\GameServiceKey.jks')
-            storePassword '123456aks'
-            keyPassword '123456aks'
-            keyAlias 'key0'
+            storeFile file('xxxxxxxxxxxxx')
+            storePassword 'xxxxxx'
+            keyPassword 'xxxxxx'
+            keyAlias 'xxxx'
         }
     }
     buildTypes {
