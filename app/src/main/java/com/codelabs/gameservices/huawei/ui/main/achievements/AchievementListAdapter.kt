@@ -11,6 +11,8 @@ import com.codelabs.gameservices.huawei.R
 import com.huawei.hms.jos.games.achievement.Achievement
 
 
+
+
 class AchievementListAdapter(private val achievementList: MutableList<Achievement>, private val context: Context) : RecyclerView.Adapter<AchievementListAdapter.ModelViewHolder>() {
 
     class ModelViewHolder(view: View) : RecyclerView.ViewHolder(view) {
