@@ -14,17 +14,16 @@ class GameBeginViewModel(activity: Activity) : ViewModel() {
     private val _navigateToQuizFragment = MutableLiveData<Boolean>()
     private val _navigateToAchievements = MutableLiveData<Boolean>()
     var accountName: MutableLiveData<String> = MutableLiveData()
-    var activity: Activity? = null
     var gameServiceUtils: GameServiceUtils? = null
 
 
+    //Score object is static and it holds the highest score that the user did
     companion object {
         var score: MutableLiveData<Int>? = MutableLiveData(0)
     }
 
     init {
-        this.activity = activity
-
+        //Initializing the Client in order to make Game Service work
         JosApps.getJosAppsClient(activity).init()
 
         gameServiceUtils = GameServiceUtils(activity, this)
@@ -32,6 +31,8 @@ class GameBeginViewModel(activity: Activity) : ViewModel() {
 
 
     }
+
+    //Navigation Functions
 
     val navigateToQuizFragment: LiveData<Boolean>
         get() = _navigateToQuizFragment

@@ -19,15 +19,20 @@ class QuizFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        // Get a reference to the binding object and inflate the fragment views.
         val binding: QuizFragmentBinding =
             DataBindingUtil.inflate(inflater, R.layout.quiz_fragment, container, false)
 
+        // Get a reference to the ViewModel associated with this fragment.
         val factory = QuizViewModelFactory(this.requireActivity())
         val quizViewModel =ViewModelProvider(this, factory).get(QuizViewModel::class.java)
 
+        //We are setting the parameters of the binding properties
         binding.viewmodel = quizViewModel
         binding.lifecycleOwner = this
 
+        //Navigation Function
         quizViewModel.navigateBackToMenu!!.observe(viewLifecycleOwner, Observer {
             if(it ==true) {
                 Utils.buildAlertDialogAndNavigate(this)

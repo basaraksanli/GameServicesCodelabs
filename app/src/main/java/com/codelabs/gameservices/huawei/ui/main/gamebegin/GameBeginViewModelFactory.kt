@@ -5,7 +5,7 @@ import android.app.Activity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
-
+//ViewModelFactory to get activity from the Activity into ViewModel
 class GameBeginViewModelFactory (
     private val activity: Activity) : ViewModelProvider.Factory
 {

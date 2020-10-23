@@ -3,6 +3,7 @@ package com.codelabs.gameservices.huawei
 import android.app.Application
 import com.huawei.hms.api.HuaweiMobileServicesUtil
 
+//Initialize and set HuaweiMobileServices to the application
 
 class MyApplication : Application() {
     override fun onCreate() {

@@ -26,16 +26,16 @@ class GameBeginFragment : Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_game_begin, container, false)
 
         // Get a reference to the ViewModel associated with this fragment.
-
         val factory = GameBeginViewModelFactory(this.requireActivity())
-        val gameBeginViewModel =ViewModelProvider(this, factory).get(GameBeginViewModel::class.java)
-        
+        val gameBeginViewModel =
+            ViewModelProvider(this, factory).get(GameBeginViewModel::class.java)
 
 
+        //We are setting the parameters of the binding properties
         binding.viewmodel = gameBeginViewModel
         binding.lifecycleOwner = this
 
-
+        //Navigation Observation
         gameBeginViewModel.navigateToQuizFragment.observe(
             viewLifecycleOwner,
             Observer {
@@ -44,7 +44,7 @@ class GameBeginFragment : Fragment() {
                     gameBeginViewModel.doneNavigatingQuiz()
                 }
             })
-
+        //Navigation Observation
         gameBeginViewModel.navigateToAchievements.observe(
             viewLifecycleOwner,
             Observer {

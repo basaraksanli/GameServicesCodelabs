@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
-
+//This is the View Model Factory for getting fragment object from the fragment to the View Model Object
 class AchievementsViewModelFactory (
     private val fragment: Fragment) : ViewModelProvider.Factory
 {

@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.main_activity)
     }
 
+    //ActivityResult for HuaweiID sign in
     override fun onActivityResult(
         requestCode: Int,
         resultCode: Int,

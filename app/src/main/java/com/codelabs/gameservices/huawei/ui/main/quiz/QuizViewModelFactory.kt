@@ -5,7 +5,7 @@ import android.app.Activity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
-
+//ViewModelFactory to get activity to ViewModel from the activity
 class QuizViewModelFactory (
     private val activity: Activity) : ViewModelProvider.Factory
 {
