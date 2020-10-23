@@ -11,11 +11,13 @@ import com.codelabs.gameservices.huawei.R
 import com.huawei.hms.jos.games.achievement.Achievement
 
 
-
+//AchievementListAdapter is for Recycler View to show Achievements
 
 class AchievementListAdapter(private val achievementList: MutableList<Achievement>, private val context: Context) : RecyclerView.Adapter<AchievementListAdapter.ModelViewHolder>() {
 
     class ModelViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
+        //We have initialize our TextViews here.
         val achievementName: TextView = view.findViewById(R.id.achievement_name)
         val achievementDescription: TextView = view.findViewById(R.id.achievement_des)
         val achievementImage: ImageView = view.findViewById(R.id.achievement_image)
@@ -23,19 +25,25 @@ class AchievementListAdapter(private val achievementList: MutableList<Achievemen
         val achievementSteps: TextView = view.findViewById(R.id.achievement_increment)
 
 
+        //We have set our single Achievement Item to UI objects. We will use it in onBindViewHolder function
         @SuppressLint("SetTextI18n")
         fun bindItems(item: Achievement, context: Context) {
+
+            //If Achievement is not hidden
             if(item.state!=2) {
                 achievementName.text = item.displayName
                 achievementDescription.text = item.descInfo
 
+                //If Achievement has steps to unlock
                 if (item.type == 2) {
                     achievementSteps.visibility = View.VISIBLE
                     achievementSteps.text = "Steps:${item.reachedSteps}/${item.allSteps}"
                 } else
                     achievementSteps.visibility = View.GONE
+                //Download Image from the Achievement URI
                 Glide.with(context).load(item.reachedThumbnailUri).into(achievementImage)
             }
+            //Display Achievement Information according to its state ( Unlocked, Hidden, Revealed )
             when (item.state) {
                 1 -> achievementState.text = "Revealed"
                 2 -> {
@@ -51,6 +59,7 @@ class AchievementListAdapter(private val achievementList: MutableList<Achievemen
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ModelViewHolder {
+        //Inflate layout according to our resource file list_view_item
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.list_view_item, parent, false)
         return ModelViewHolder(view)
@@ -60,6 +69,7 @@ class AchievementListAdapter(private val achievementList: MutableList<Achievemen
         return achievementList.size
     }
 
+    //This is the essential function for binding all the information to the items
     override fun onBindViewHolder(holder: ModelViewHolder, position: Int) {
         holder.bindItems(achievementList[position], context)
     }
