@@ -35,6 +35,7 @@ class AchievementsViewModel(private val fragment: Fragment) : ViewModel() {
     }
     //This is the function for getting achievements from AGC. Since it is an async task, It does not return anything. However we are adding achievements to a list as the Achievements Items are downloaded
     private fun getAchievements(){
+        // TODO: get achievements from the client and add each achievement to the custom adapter list.
         val task: Task<List<Achievement>> =
             achievementClient.getAchievementList(true)
         task.addOnSuccessListener(OnSuccessListener { data ->

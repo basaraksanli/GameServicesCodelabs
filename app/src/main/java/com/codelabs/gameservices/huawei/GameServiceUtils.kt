@@ -29,14 +29,18 @@ class GameServiceUtils(activity: Activity?, viewModel: GameBeginViewModel?) {
         private var playerID: String? = null
     }
 
-
+// TODO: asdas
 
     init {
         this.activity = activity
         this.viewModel = viewModel
 
-
-        //get the referances of the achievement clients and buoy client
+        //Get the references of the AchievementClient and BuoyClient.
+        // The BuoyClient class defines the APIs related to floating windows.
+        // The AchievementsClient class defines APIs for managing game achievements,
+        // for example, obtaining the game achievement list, incrementing an achievement,
+        // and setting steps required for unlocking an achievement.
+        // TODO: Get the references of the Achievement Client and BuoyClient
         achievementClient = Games.getAchievementsClient(activity)
         buoyClient = Games.getBuoyClient(activity)
 
@@ -44,12 +48,14 @@ class GameServiceUtils(activity: Activity?, viewModel: GameBeginViewModel?) {
 
     //This function returns the HuaweiIDAuth parameters for HuaweiID sign in. Parameters is set for Game Sign in
     fun getHuaweiIdParams(): HuaweiIdAuthParams? {
+        // TODO: Set HuaweiAuth Parameter as Game Login
         return HuaweiIdAuthParamsHelper(HuaweiIdAuthParams.DEFAULT_AUTH_REQUEST_PARAM_GAME).setIdToken()
             .createParams()
     }
 
     //this function is used to sign in the user. If the user already signed in before, it process silent sign in. If it is the first time for the user, it starts the intent of Huawei ID sign in
     fun signIn() {
+        // TODO: Sign in with Huawei ID
         if(playerID==null) {
             val authHuaweiIdTask =
                 HuaweiIdAuthManager.getService(activity, getHuaweiIdParams()).silentSignIn()
@@ -80,6 +86,7 @@ class GameServiceUtils(activity: Activity?, viewModel: GameBeginViewModel?) {
 
     //this is the achievements list which Huawei Game Service provide. However we used our own list adapter for the achievements page
     fun showAchivementList() {
+        // TODO: Show Achievement List using achievement client.
         val task =
             achievementClient!!.showAchievementListIntent
         task.addOnSuccessListener { intent: Intent? ->
@@ -104,6 +111,7 @@ class GameServiceUtils(activity: Activity?, viewModel: GameBeginViewModel?) {
     //this function unlocks the achievement immediately
 
     fun unlockAchievement(achievementID: String) {
+        // TODO: Unlock Achievement using reachwithResult function. This can be also used without the callback function.
         val task: Task<Void> =
             achievementClient!!.reachWithResult(achievementID)
         task.addOnSuccessListener { v: Void? ->
@@ -119,6 +127,7 @@ class GameServiceUtils(activity: Activity?, viewModel: GameBeginViewModel?) {
 
     //this function reveals the achievement immediately
     fun revealAchievement(achievementId: String) {
+        // TODO: Reveal Hidden Achievement with visualizeWithResult function. This can be also used without the callback function.
         val task =
             achievementClient!!.visualizeWithResult(achievementId)
         task.addOnSuccessListener {
@@ -134,6 +143,7 @@ class GameServiceUtils(activity: Activity?, viewModel: GameBeginViewModel?) {
 
     //this function increments the steps of the achievements. Step number to increment is configurable
     fun increment(achievementId: String?, isChecked: Boolean) {
+        // TODO: Increment step count of the achievement using grow function or use the grow function with a call back
         if (!isChecked) {
             achievementClient!!.grow(achievementId, 1)
         } else {
@@ -143,6 +153,7 @@ class GameServiceUtils(activity: Activity?, viewModel: GameBeginViewModel?) {
 
     //this function sets the step number of the achievement for the user. However You cant set the step lower then current state.
     fun setStep(achievementId: String?, stepsNum: Int, isChecked: Boolean) {
+        // TODO: set step count of the achievement using makeSteos function or use the makeStep function with a call back
         if (!isChecked) {
             achievementClient!!.makeSteps(achievementId, stepsNum)
         } else {
@@ -152,6 +163,7 @@ class GameServiceUtils(activity: Activity?, viewModel: GameBeginViewModel?) {
 
     //Same function but task version, can attach callbacks
     private fun incrementWithResult(
+        // TODO: Increment step count of achievement using growWithResult with a callback
         achievementId: String,
         stepsNum: Int
     ) {
@@ -172,6 +184,7 @@ class GameServiceUtils(activity: Activity?, viewModel: GameBeginViewModel?) {
     }
     //Same function but task version, can attach callbacks
     private fun setStepsWithResult(
+        // TODO: Set step count of achievement using makeStepsWithResult with a callback
         achievementId: String,
         stepsNum: Int
     ) {
