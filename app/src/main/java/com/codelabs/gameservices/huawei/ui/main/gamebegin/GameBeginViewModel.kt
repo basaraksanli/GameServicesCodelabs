@@ -23,7 +23,7 @@ class GameBeginViewModel(activity: Activity) : ViewModel() {
     }
 
     init {
-        //Initializing the Client in order to make Game Service work
+        // TODO: Initialize the Client in order to make Game Service work
         JosApps.getJosAppsClient(activity).init()
 
         gameServiceUtils = GameServiceUtils(activity, this)
