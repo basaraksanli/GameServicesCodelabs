@@ -13,7 +13,14 @@ import com.huawei.hms.jos.games.achievement.Achievement
 
 //AchievementListAdapter is for Recycler View to show Achievements
 
-class AchievementListAdapter(private val achievementList: MutableList<Achievement>, private val context: Context) : RecyclerView.Adapter<AchievementListAdapter.ModelViewHolder>() {
+class AchievementListAdapter(private val context: Context) : RecyclerView.Adapter<AchievementListAdapter.ModelViewHolder>() {
+
+    private var achievementList = listOf<Achievement>()
+
+    fun setAchievementList(list: List<Achievement>) {
+        achievementList = list
+        notifyDataSetChanged()
+    }
 
     class ModelViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 

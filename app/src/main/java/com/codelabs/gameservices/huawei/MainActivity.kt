@@ -5,10 +5,16 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.codelabs.gameservices.huawei.GameServiceManager.Companion.SIGN_IN_REQUEST_CODE
+import com.codelabs.gameservices.huawei.constant.HUAWEI_ID_SIGN_IN_RESULT
 import com.huawei.hms.support.hwid.result.HuaweiIdAuthResult
 import org.json.JSONException
 
 class MainActivity : AppCompatActivity() {
+
+    companion object {
+        private const val TAG = "MainActivity"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,28 +28,32 @@ class MainActivity : AppCompatActivity() {
         data: Intent?
     ) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 6013) {
+
+        if (requestCode == SIGN_IN_REQUEST_CODE) {
+
             if (null == data) {
-                Log.d("MainActivity", "signIn intent is null")
+                Log.d(TAG, "signIn intent is null")
                 return
             }
-            val jsonSignInResult = data.getStringExtra("HUAWEIID_SIGNIN_RESULT")
+
+            val jsonSignInResult = data.getStringExtra(HUAWEI_ID_SIGN_IN_RESULT)
+
             if (TextUtils.isEmpty(jsonSignInResult)) {
-                Log.d("MainActivity", "signIn result is empty")
+                Log.d(TAG, "signIn result is empty")
                 return
             }
+
             try {
-                val signInResult =
-                    HuaweiIdAuthResult().fromJson(jsonSignInResult)
+                val signInResult = HuaweiIdAuthResult().fromJson(jsonSignInResult)
                 if (0 == signInResult.status.statusCode) {
-                    Log.d("MainActivity", ("signIn success."))
-                    Log.d("MainActivity", "signIn result: " + signInResult.toJson())
+                    Log.d(TAG, "signIn success. Result: ${signInResult.toJson()}")
                 } else {
-                    Log.d("MainActivity","signIn failed: " + signInResult.status.statusCode)
+                    Log.d(TAG,"signIn failed: " + signInResult.status.statusCode)
                 }
-            } catch (var7: JSONException) {
-                Log.d("MainActivity","Failed to convert json from signInResult.")
+            } catch (e: JSONException) {
+                Log.e(TAG,"Failed to convert json from signInResult.", e)
             }
+
         }
     }
 }

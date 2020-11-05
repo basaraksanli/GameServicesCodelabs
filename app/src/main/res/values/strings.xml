@@ -21,4 +21,7 @@
     <string name="steps">Steps:</string>
     <string name="main_menu">Main Menu</string>
     <string name="highest_score">Highest Score:</string>
+    <string name="done">Done</string>
+    <string name="you_have_completed_the_quiz">You have completed the quiz.</string>
+    <string name="yes">Yes</string>
 </resources>

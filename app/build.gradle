@@ -19,15 +19,14 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    dataBinding{
-        enabled=true
-    }
+    android.buildFeatures.dataBinding = true
+
     signingConfigs {
         config {
-            storeFile file('xxxxxxxxxxxxx')
-            storePassword 'xxxxxx'
-            keyPassword 'xxxxxx'
-            keyAlias 'xxxx'
+            storeFile file('xxxxxxx.jks')
+            storePassword 'xxxxxxx'
+            keyPassword 'xxxxxxx'
+            keyAlias 'xxxxxxx'
         }
     }
     buildTypes {
