@@ -25,7 +25,7 @@ class AchievementListAdapter(private val context: Context) :
 
     class ModelViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        //We have initialize our TextViews here.
+        //We have initialized our TextViews here.
         val achievementName: TextView = view.findViewById(R.id.achievement_name)
         val achievementDescription: TextView = view.findViewById(R.id.achievement_des)
         val achievementImage: ImageView = view.findViewById(R.id.achievement_image)
