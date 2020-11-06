@@ -10,10 +10,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.codelabs.gameservices.huawei.GameServiceManager
 import com.codelabs.gameservices.huawei.R
-import com.codelabs.gameservices.huawei.databinding.QuizFragmentBinding
 import com.codelabs.gameservices.huawei.Utils
 import com.codelabs.gameservices.huawei.constant.*
-import com.codelabs.gameservices.huawei.ui.main.gamebegin.GameBeginViewModel
+import com.codelabs.gameservices.huawei.databinding.QuizFragmentBinding
 
 class QuizFragment : Fragment() {
 
@@ -38,7 +37,7 @@ class QuizFragment : Fragment() {
 
         //Navigation Function
         quizViewModel.navigateBackToMenu!!.observe(viewLifecycleOwner, Observer {
-            if(it == true) {
+            if(it) {
                 Utils.buildAlertDialogAndNavigate(this)
                 quizViewModel.navigateBackDone()
             }

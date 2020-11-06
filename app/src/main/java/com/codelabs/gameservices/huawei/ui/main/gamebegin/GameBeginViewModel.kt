@@ -1,11 +1,9 @@
 package com.codelabs.gameservices.huawei.ui.main.gamebegin
 
-import android.app.Activity
 import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.huawei.hms.jos.JosApps
 
 
 class GameBeginViewModel : ViewModel() {

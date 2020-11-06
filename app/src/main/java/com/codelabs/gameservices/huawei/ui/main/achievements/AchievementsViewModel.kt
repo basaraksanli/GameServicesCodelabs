@@ -1,6 +1,5 @@
 package com.codelabs.gameservices.huawei.ui.main.achievements
 
-import AchievementListAdapter
 import android.util.Log
 import android.view.View
 import androidx.lifecycle.LiveData

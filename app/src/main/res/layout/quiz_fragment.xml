@@ -42,7 +42,7 @@
                 android:layout_width="5dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@{viewmodel.questionObject.a1}" />
+                android:text="@{viewmodel.questionObject.ansA}" />
 
             <Button
                 android:id="@+id/button2"
@@ -59,7 +59,7 @@
                 android:layout_width="5dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@{viewmodel.questionObject.a2}" />
+                android:text="@{viewmodel.questionObject.ansB}" />
         </LinearLayout>
 
         <LinearLayout
@@ -89,7 +89,7 @@
                 android:layout_width="5dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@{viewmodel.questionObject.a3}" />
+                android:text="@{viewmodel.questionObject.ansC}" />
 
             <Button
                 android:id="@+id/button4"
@@ -106,7 +106,7 @@
                 android:layout_width="5dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@{viewmodel.questionObject.a4}" />
+                android:text="@{viewmodel.questionObject.ansD}" />
         </LinearLayout>
 
         <LinearLayout

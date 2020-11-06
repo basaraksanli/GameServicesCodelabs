@@ -13,7 +13,8 @@ import com.huawei.hms.jos.games.achievement.Achievement
 
 //AchievementListAdapter is for Recycler View to show Achievements
 
-class AchievementListAdapter(private val context: Context) : RecyclerView.Adapter<AchievementListAdapter.ModelViewHolder>() {
+class AchievementListAdapter(private val context: Context) :
+    RecyclerView.Adapter<AchievementListAdapter.ModelViewHolder>() {
 
     private var achievementList = listOf<Achievement>()
 
@@ -37,7 +38,7 @@ class AchievementListAdapter(private val context: Context) : RecyclerView.Adapte
         fun bindItems(item: Achievement, context: Context) {
 
             //If Achievement is not hidden
-            if(item.state!=2) {
+            if (item.state != 2) {
                 achievementName.text = item.displayName
                 achievementDescription.text = item.descInfo
 

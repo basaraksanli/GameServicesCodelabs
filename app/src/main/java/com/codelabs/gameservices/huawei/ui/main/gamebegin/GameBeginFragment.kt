@@ -1,12 +1,11 @@
 package com.codelabs.gameservices.huawei.ui.main.gamebegin
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -44,7 +43,7 @@ class GameBeginFragment : Fragment() {
         gameBeginViewModel.navigateToQuizFragment.observe(
             viewLifecycleOwner,
             Observer {
-                if (it == true) {
+                if (it) {
                     this.findNavController().navigate(R.id.start_game_navigation)
                     gameBeginViewModel.doneNavigatingQuiz()
                 }

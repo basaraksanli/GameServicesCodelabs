@@ -1,7 +1,6 @@
 
 package com.codelabs.gameservices.huawei.ui.main.gamebegin
 
-import android.app.Activity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
