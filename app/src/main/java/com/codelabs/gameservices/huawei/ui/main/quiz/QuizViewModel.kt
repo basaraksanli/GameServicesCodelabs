@@ -34,6 +34,7 @@ class QuizViewModel : ViewModel() {
         score.value = 0
 
         _correctAnswerCount.value = 0
+        _wrongAnswerCount.value = 0
 
         //Start Displaying Questions
         setQuestion()
@@ -104,11 +105,11 @@ class QuizViewModel : ViewModel() {
     private fun correctAnswer(){
         //increment score
         score.value = score.value?.plus(ANSWER_POINT_CORRECT)
-        _correctAnswerCount.value?.inc()
+        _correctAnswerCount.value = _correctAnswerCount.value?.plus(1)
     }
 
     private fun wrongAnswer(){
-        //if user selects the wrong answer increment primitive achievement and decrease score by 5
+        //if user selects the wrong answer decrease score by specified point
         if (score.value!! >= 5){
             score.value = score.value?.minus(ANSWER_POINT_WRONG)
         }

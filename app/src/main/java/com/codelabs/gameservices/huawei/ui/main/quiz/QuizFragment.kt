@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -47,11 +48,13 @@ class QuizFragment : Fragment() {
             viewLifecycleOwner,
             Observer {
 
+
                 //for the first correct answer unlock achievement newbie
                 if (it == 1) {
                     mGameServiceManager.unlockAchievement(ACHIEVEMENT_ID_NEWBIE)
                 }
-
+                if(it>0)
+                    Toast.makeText(context, "Correct Answer", Toast.LENGTH_SHORT).show()
                 //if correct answerCount reaches 10 in one try, It will reveal the achievement
                 if (it == 10) {
                     mGameServiceManager.revealAchievement(ACHIEVEMENT_ID_SOPHISTICATED)
@@ -75,6 +78,8 @@ class QuizFragment : Fragment() {
         quizViewModel.wrongAnswerCount.observe(
             viewLifecycleOwner,
             Observer {
+                if(it>0)
+                    Toast.makeText(context, "Wrong Answer", Toast.LENGTH_SHORT).show()
                 mGameServiceManager.increment(ACHIEVEMENT_ID_PRIMITIVE, true)
             }
         )
