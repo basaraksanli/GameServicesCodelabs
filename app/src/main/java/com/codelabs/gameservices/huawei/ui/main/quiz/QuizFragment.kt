@@ -53,16 +53,19 @@ class QuizFragment : Fragment() {
                 if (it == 1) {
                     mGameServiceManager.unlockAchievement(ACHIEVEMENT_ID_NEWBIE)
                 }
-                if(it>0)
-                    Toast.makeText(context, "Correct Answer", Toast.LENGTH_SHORT).show()
+
+
                 //if correct answerCount reaches 10 in one try, It will reveal the achievement
                 if (it == 10) {
                     mGameServiceManager.revealAchievement(ACHIEVEMENT_ID_SOPHISTICATED)
                 }
+                if(it>0) {
+                    Toast.makeText(context, "Correct Answer", Toast.LENGTH_SHORT).show()
 
-                //for every correct answer increment the achievements steps of the achievements below
-                mGameServiceManager.increment(ACHIEVEMENT_ID_LEARNING,true)
-                mGameServiceManager.increment(ACHIEVEMENT_ID_SOPHISTICATED, true)
+                    //for every correct answer increment the achievements steps of the achievements below
+                    mGameServiceManager.increment(ACHIEVEMENT_ID_LEARNING, true)
+                    mGameServiceManager.increment(ACHIEVEMENT_ID_SOPHISTICATED, true)
+                }
             }
         )
 
@@ -78,9 +81,10 @@ class QuizFragment : Fragment() {
         quizViewModel.wrongAnswerCount.observe(
             viewLifecycleOwner,
             Observer {
-                if(it>0)
+                if(it>0) {
                     Toast.makeText(context, "Wrong Answer", Toast.LENGTH_SHORT).show()
-                mGameServiceManager.increment(ACHIEVEMENT_ID_PRIMITIVE, true)
+                    mGameServiceManager.increment(ACHIEVEMENT_ID_PRIMITIVE, true)
+                }
             }
         )
 

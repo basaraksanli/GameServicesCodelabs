@@ -20,6 +20,8 @@ class GameServiceManager(activity: Activity) {
     companion object {
         private const val TAG = "GameServiceManager"
         const val SIGN_IN_REQUEST_CODE = 6013
+        private var playerID: String? = null
+
     }
 
     private var mActivity: Activity? = activity
@@ -29,7 +31,7 @@ class GameServiceManager(activity: Activity) {
     private var mPlayersClient: PlayersClient? = null
     private var mDisplayName: String? = null
 
-    private var playerID: String? = null
+
 
     init {
         init()
