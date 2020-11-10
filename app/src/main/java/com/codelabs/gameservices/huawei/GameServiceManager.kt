@@ -54,7 +54,7 @@ class GameServiceManager(activity: Activity) {
 
     //this function is used to sign in the user. If the user already signed in before, it process silent sign in. If it is the first time for the user, it starts the intent of Huawei ID sign in
     fun signIn(resultListener: ResultListener) {
-        // TODO: Sign in with Huawei ID
+        // TODO: Sign in with Huawei ID (use result listener to retrieve displayName)
         if(playerID == null) {
             val authHuaweiIdTask =
                 HuaweiIdAuthManager.getService(mActivity, getHuaweiIdParams()).silentSignIn()
@@ -83,6 +83,7 @@ class GameServiceManager(activity: Activity) {
 
     //this is the function for getting Player ID
     private fun getPlayerID() {
+        // TODO : Retrieve PlayerID using getPlayersClient
         mPlayersClient = Games.getPlayersClient(mActivity)
         val playerTask: Task<Player> = mPlayersClient!!.currentPlayer
         playerTask.addOnSuccessListener { player: Player ->

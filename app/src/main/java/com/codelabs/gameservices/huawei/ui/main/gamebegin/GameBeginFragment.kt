@@ -64,6 +64,8 @@ class GameBeginFragment : Fragment() {
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
+        //TODO : Sign in here when the activity is created, control if the player is already sign in inside the signIn function in GameServiceManager class.
+        //TODO : Create a new instance of ResultListener to retrieve displayName
         super.onActivityCreated(savedInstanceState)
 
         mGameServiceManager.signIn(object : ResultListener {
